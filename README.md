@@ -10,5 +10,12 @@ Visit http://code.google.com/p/django-brutebuster/ for early versions
 
 * Add the django application in the project directory.
 * Add django_failed_attempts to installed APPS in settings.py
-* Add variable AUTH_PROTECTION_BACKEND = 'django.contrib.auth.backends.ModelBackend'
-* Replace the default authentication backends in settings.py with 'django_failed_attempts.backends.FailedAttemptBackend'
+* Add variable AUTH_PROTECTION_BACKEND that holds your authentication backend.
+AUTH_PROTECTION_BACKEND= 'django.contrib.auth.backends.ModelBackend'
+* Replace the default authentication backends to be the fjango_failed_attempts in settings.py. 
+AUTHENTICATION_BACKENDS = (
+	'django_failed_attempts.backends.FailedAttemptBackend',
+)
+* Add variables in settings.py to override the default settings for blocking.
+BB_MAX_FAILURES = 5
+BB_BLOCK_INTERVAL = 15
